@@ -1,7 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField
-from wtforms.validators import DataRequired, ValidationError, Email, EqualTo
-from app.models import User
+from wtforms.validators import DataRequired
 
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
@@ -24,4 +23,4 @@ class RegistrationForm(FlaskForm):
     def validate_email(self, email):
         user = user.query.filter_by(email=email.data).first()
         if user is not None:
-            raise ValidationError('Pick a dif email')
+            raist ValidationError('Pick a dif email')

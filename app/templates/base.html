@@ -9,8 +9,11 @@
     <body>
         <div>
 	  Microblog: 
-	  <a href="{{ url_for('index') }}">Home</a>
-	  <a href="{{ url_for('login') }}">Log In</a>
+	  {% if current_user.is_anonymous %}
+	  <a href="{{ url_for('login') }}">Home</a>
+	  {% else %}
+	  <a href="{{ url_for('index') }}">Log In</a>
+	  {% endif %}
 	</div>
         <hr>
 	{% with msgs =get_flashed_messages() %}
